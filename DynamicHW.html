@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Box Generation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 25px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: brown;
+            margin: 20px;
+            transition: all 3s ease;
+            border-radius: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <label for="height">Height:</label>
+        <input type="text" id="height" name="height" maxlength="3">
+        <label for="width">Width:</label>
+        <input type="text" id="width" name="width" maxlength="3">
+
+        <div id="box"></div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#height, #width').on('input', function () {
+                var height = parseInt($('#height').val());
+                var width = parseInt($('#width').val());
+
+                // Check if the input is a number
+                if (!isNaN(height) && !isNaN(width)) {
+                    $('#box').css({
+                        'height': height + 'px',
+                        'width': width + 'px'
+                    }, 3000, 'ease');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
